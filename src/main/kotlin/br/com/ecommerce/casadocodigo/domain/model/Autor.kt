@@ -7,20 +7,21 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 
 @Entity
 data class Autor(
         @NotBlank
-        var nome:String,
+        val nome:String,
         @NotBlank @Email
-        var email: String,
+        val email: String,
         @NotBlank
-        var descricao: String,
+        val descricao: String,
         @Id
         @GeneratedValue(generator = "UUID")
         @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
         val id: String = ""
 ) {
-
+    @field: NotNull
     val instante: LocalDateTime = LocalDateTime.now()
 }
