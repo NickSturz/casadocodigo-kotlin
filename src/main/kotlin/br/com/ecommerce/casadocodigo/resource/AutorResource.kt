@@ -14,7 +14,7 @@ import javax.transaction.Transactional
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/autores")
+@RequestMapping("/v1/autores")
 class AutorResource(
         private final val autorRepository: AutorRepository,
         private final val emailUnicoValidator: EmailUnicoValidator
