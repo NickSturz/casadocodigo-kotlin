@@ -22,10 +22,10 @@ class AutorResource(
 
     val log: Logger = LoggerFactory.getLogger(this.javaClass)
 
-    @InitBinder
-    fun init(binder:WebDataBinder){
-        binder.addValidators(emailUnicoValidator)
-    }
+//    @InitBinder
+//    fun init(binder:WebDataBinder){
+//        binder.addValidators(emailUnicoValidator)
+//    }
 
     @PostMapping
     fun novoAutor(@Valid @RequestBody novoAutorRequest: NovoAutorRequest, uriComponentsBuilder: UriComponentsBuilder):ResponseEntity<Autor> {

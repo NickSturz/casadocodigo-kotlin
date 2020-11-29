@@ -20,10 +20,10 @@ class CategoriaResource(
 
     private final val logger: Logger = LoggerFactory.getLogger(CategoriaResource::class.java)
 
-    @InitBinder
-    fun init(binder:WebDataBinder){
-        binder.addValidators(categoriaUnicaValidator)
-    }
+//    @InitBinder
+//    fun init(binder:WebDataBinder){
+//        binder.addValidators(categoriaUnicaValidator)
+//    }
 
     @PostMapping
     fun novaCategoria(@RequestBody @Valid novaCategoriaRequest: NovaCategoriaRequest, uriComponentsBuilder: UriComponentsBuilder ): ResponseEntity<String>{

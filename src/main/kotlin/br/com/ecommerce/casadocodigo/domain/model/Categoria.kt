@@ -16,7 +16,6 @@ data class Categoria(
         val nome: String
 ) {
     constructor() : this("","") {
-
     }
 
 }
