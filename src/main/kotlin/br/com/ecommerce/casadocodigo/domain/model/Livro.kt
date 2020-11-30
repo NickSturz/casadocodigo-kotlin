@@ -20,33 +20,33 @@ data class Livro(
         val titulo: String,
 
         @field: NotBlank
-        private val resumo: String,
+        val resumo: String,
 
-        private val sumario: String?,
+        val sumario: String?,
 
         @field: NotNull
         @field: Positive
         @field: Min(20)
-        private val preco: BigDecimal,
+        val preco: BigDecimal,
 
         @field: NotNull
         @field: Positive
-        private val numeroPagina: Int,
+        val numeroPagina: Int,
 
         @field: NotBlank
         @field: Column(unique = true)
-        private val isbn: String,
+        val isbn: String,
 
         @field: Future
-        private val dataPublicacao: LocalDate,
+        val dataPublicacao: LocalDate,
 
         @field: NotNull
         @ManyToOne(fetch = FetchType.EAGER)
-        private val categoria: Categoria,
+        val categoria: Categoria,
 
         @field: NotNull
         @ManyToOne(fetch = FetchType.EAGER)
-        private val autor: Autor
+        val autor: Autor
 ) {
 
     constructor(): this(
