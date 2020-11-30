@@ -14,7 +14,11 @@ class ErroPadraoAdvice {
 
         erros.add(exception.message.toString())
 
-        val erroPadrao: ErroPadrao = ErroPadrao(status = HttpStatus.BAD_REQUEST, erros =  erros, causa = exception.cause.toString())
+        val erroPadrao: ErroPadrao = ErroPadrao(
+                status = HttpStatus.UNPROCESSABLE_ENTITY,
+                erros =  erros,
+                causa = exception.cause.toString()
+        )
 
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(erroPadrao)
     }
