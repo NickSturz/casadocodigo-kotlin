@@ -17,7 +17,7 @@ data class Livro(
 
         @field: NotBlank
         @field: Column(unique = true)
-        private val titulo: String,
+        val titulo: String,
 
         @field: NotBlank
         private val resumo: String,

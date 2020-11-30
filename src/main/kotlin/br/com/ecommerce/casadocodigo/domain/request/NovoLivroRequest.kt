@@ -39,7 +39,7 @@ data class NovoLivroRequest(
 
         @field:NotNull
         @field:Future
-        @field: JsonFormat(pattern = "yyyy-MM-hh", shape = JsonFormat.Shape.STRING)
+        @field: JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
         private val dataPublicacao: LocalDate,
 
         @field:NotBlank
