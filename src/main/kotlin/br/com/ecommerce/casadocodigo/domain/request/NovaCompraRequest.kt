@@ -7,11 +7,17 @@ import javax.validation.Valid
 data class NovaCompraRequest(
 
         @field: Valid
-        val dadosCliente: DadosClienteRequest
+        val dadosCliente: DadosClienteRequest,
+
+        @field: Valid
+        val carrinhoCompra: CarrinhoCompraRequest
 
 ) {
     fun toModel(manager: EntityManager): Compra{
-        return Compra(dadosCliente = this.dadosCliente.toModel(manager))
+        return Compra(
+                dadosCliente = this.dadosCliente.toModel(manager),
+                carrinhoCompra = this.carrinhoCompra.toModel(manager = manager)
+        )
     }
 
 }
