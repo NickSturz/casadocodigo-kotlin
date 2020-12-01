@@ -4,10 +4,7 @@ import br.com.ecommerce.casadocodigo.annotation.ValorUnico
 import br.com.ecommerce.casadocodigo.domain.model.CupomDesconto
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDateTime
-import javax.validation.constraints.Future
-import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotNull
-import javax.validation.constraints.Positive
+import javax.validation.constraints.*
 
 data class NovoCupomRequest(
         @field: NotBlank
@@ -16,7 +13,9 @@ data class NovoCupomRequest(
 
         @field: NotNull
         @field: Positive
-        val desconto: Double,
+        @field: Min(0)
+        @field: Max(100)
+        val desconto: Int,
 
         @field: Future
         @field: NotNull

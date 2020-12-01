@@ -1,6 +1,7 @@
 package br.com.ecommerce.casadocodigo.resource
 
 import br.com.ecommerce.casadocodigo.domain.request.NovaCompraRequest
+import br.com.ecommerce.casadocodigo.repository.CupomDescontoRepository
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -18,7 +19,8 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("/v1/compras")
 class CompraResource(
-        private val manager: EntityManager
+        private val manager: EntityManager,
+        private val cupomDescontoRepository: CupomDescontoRepository
 ) {
 
     private val logger: Logger = LoggerFactory.getLogger(CompraResource::class.java)
@@ -29,7 +31,7 @@ class CompraResource(
     fun novaCompra(@RequestBody @Valid novaCompraRequest: NovaCompraRequest, uriComponentsBuilder: UriComponentsBuilder): ResponseEntity<String>{
         logger.info("Requisição recebida para cadastrar nova compra: $novaCompraRequest")
 
-        val novaCompra = novaCompraRequest.toModel(manager)
+        val novaCompra = novaCompraRequest.toModel(manager, cupomDescontoRepository)
 
         Assert.isTrue(novaCompra.valorTotalEnviado() == novaCompra.valorTotalCompraCalculado(), "Valor total da compra não bate com o valor real da compra.")
 

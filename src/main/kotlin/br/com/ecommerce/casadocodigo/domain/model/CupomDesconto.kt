@@ -1,6 +1,7 @@
 package br.com.ecommerce.casadocodigo.domain.model
 
 import org.hibernate.annotations.GenericGenerator
+import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
 import javax.validation.constraints.Future
@@ -22,7 +23,7 @@ data class CupomDesconto(
 
         @field: Positive
         @field: NotNull
-        val desconto: Double,
+        val desconto: Int,
 
         @field: Future
         @field: NotNull
@@ -31,8 +32,15 @@ data class CupomDesconto(
     constructor(): this(
             id = "",
             codigo = "",
-            desconto = Double.MIN_VALUE,
+            desconto = Int.MIN_VALUE,
             dataValidade = LocalDateTime.MIN
     ){}
 
+    fun isValid(): Boolean {
+            return this.dataValidade.isAfter(LocalDateTime.now())
+    }
+
+    fun descontoDecimal(): BigDecimal{
+        return desconto.toBigDecimal().divide("100".toBigDecimal())
+    }
 }
