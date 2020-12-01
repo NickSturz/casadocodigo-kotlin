@@ -3,6 +3,7 @@ package br.com.ecommerce.casadocodigo.resource
 import br.com.ecommerce.casadocodigo.domain.request.NovaCategoriaRequest
 import br.com.ecommerce.casadocodigo.repository.CategoriaRepository
 import br.com.ecommerce.casadocodigo.validator.CategoriaUnicaValidator
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
@@ -26,6 +27,7 @@ class CategoriaResource(
 //    }
 
     @PostMapping
+    @Tag(name = "Categoria", description = "Cria uma nova categoria")
     fun novaCategoria(@RequestBody @Valid novaCategoriaRequest: NovaCategoriaRequest, uriComponentsBuilder: UriComponentsBuilder ): ResponseEntity<String>{
         logger.info("Requisição para criar uma nova categoria recebida: $novaCategoriaRequest")
 

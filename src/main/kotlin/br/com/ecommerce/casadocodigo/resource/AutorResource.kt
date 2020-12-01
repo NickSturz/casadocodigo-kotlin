@@ -4,13 +4,17 @@ import br.com.ecommerce.casadocodigo.domain.model.Autor
 import br.com.ecommerce.casadocodigo.domain.request.NovoAutorRequest
 import br.com.ecommerce.casadocodigo.repository.AutorRepository
 import br.com.ecommerce.casadocodigo.validator.EmailUnicoValidator
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.responses.ApiResponse
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.WebDataBinder
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
-import javax.transaction.Transactional
 import javax.validation.Valid
 
 @RestController
@@ -27,6 +31,8 @@ class AutorResource(
 //        binder.addValidators(emailUnicoValidator)
 //    }
 
+    @Operation(description = "Endpoint para criar um novo autor ")
+    @Tag(name = "Autor", description = "Cria um novo autor")
     @PostMapping
     fun novoAutor(@Valid @RequestBody novoAutorRequest: NovoAutorRequest, uriComponentsBuilder: UriComponentsBuilder):ResponseEntity<Autor> {
         log.info("Requisição recebida para cadastrar novo autor: $novoAutorRequest")

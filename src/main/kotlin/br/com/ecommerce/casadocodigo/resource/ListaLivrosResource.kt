@@ -3,6 +3,8 @@ package br.com.ecommerce.casadocodigo.resource
 import br.com.ecommerce.casadocodigo.domain.model.Livro
 import br.com.ecommerce.casadocodigo.domain.response.LivroResponseDto
 import br.com.ecommerce.casadocodigo.repository.LivroRepository
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
@@ -17,6 +19,8 @@ class ListaLivrosResource( private val livroRepository: LivroRepository) {
 
     private val logger: Logger = LoggerFactory.getLogger(ListaLivrosResource::class.java)
 
+    @Tag(name = "Livro")
+    @Operation(description = "Lista o id e o titulo de todos os livros cadastrado")
     @GetMapping
     fun listaLivros(): ResponseEntity<List<LivroResponseDto>> {
 

@@ -1,6 +1,8 @@
 package br.com.ecommerce.casadocodigo.resource
 
 import br.com.ecommerce.casadocodigo.domain.request.NovoEstadoRequest
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
@@ -21,6 +23,8 @@ class EstadoResource(
 
     private val logger: Logger = LoggerFactory.getLogger(EstadoResource::class.java)
 
+    @Tag(name = "Estado", description = "Cria um novo Estado e associa a um Pais")
+    @Operation(description = "Cria um novo Estado")
     @PostMapping
     @Transactional
     fun novoEstado(@RequestBody @Valid novoEstadoRequest: NovoEstadoRequest, uriComponentsBuilder: UriComponentsBuilder): ResponseEntity<String>{

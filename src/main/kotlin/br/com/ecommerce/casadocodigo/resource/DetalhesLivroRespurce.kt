@@ -2,6 +2,8 @@ package br.com.ecommerce.casadocodigo.resource
 
 import br.com.ecommerce.casadocodigo.domain.model.Livro
 import br.com.ecommerce.casadocodigo.domain.response.LivroDetalheResponseDto
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
@@ -17,6 +19,8 @@ class DetalhesLivroRespurce(private val manager: EntityManager) {
 
     private val logger: Logger = LoggerFactory.getLogger(DetalhesLivroRespurce::class.java)
 
+    @Tag(name = "Livro")
+    @Operation(description = "Busca informações a partir do id de um determinado livro")
     @GetMapping("/{id}/detalhes")
     fun detalhesLivro(@PathVariable("id") idLivro: String): ResponseEntity<LivroDetalheResponseDto> {
         logger.info("Requesição recebida para solicitar detalhes do livro com id: ${idLivro}")

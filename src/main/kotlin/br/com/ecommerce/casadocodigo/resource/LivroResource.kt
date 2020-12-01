@@ -2,6 +2,8 @@ package br.com.ecommerce.casadocodigo.resource
 
 import br.com.ecommerce.casadocodigo.domain.request.NovoLivroRequest
 import br.com.ecommerce.casadocodigo.repository.LivroRepository
+import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
@@ -22,6 +24,8 @@ class LivroResource(
 
     private final val logger: Logger = LoggerFactory.getLogger(LivroResource::class.java)
 
+    @Tag(name = "Livro", description = "Cria e busca informações sobre livro")
+    @Operation(description = "Cadastra um novo livro")
     @PostMapping
     @Transactional
     fun novoLivro(@RequestBody @Valid novoLivroRequest: NovoLivroRequest, uriComponentsBuilder: UriComponentsBuilder): ResponseEntity<String>{
