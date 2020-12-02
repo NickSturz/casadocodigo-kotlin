@@ -29,11 +29,13 @@ class CompraDetalheResource(
 
         val compraBuscada = manager.find(Compra::class.java, idCompra)
         if (compraBuscada == null){
+            logger.warn("Compra não encontrada para id: $idCompra")
             return ResponseEntity.notFound().build()
         }
 
         val compraDetalheResponseDto = CompraDetalheResponseDto(compraBuscada)
 
+        logger.info("Compra buscada com sucesso: $compraDetalheResponseDto")
         return ResponseEntity.ok().body(compraDetalheResponseDto)
     }
 

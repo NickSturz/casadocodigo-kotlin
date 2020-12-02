@@ -37,6 +37,7 @@ class CompraResource(
 
         manager.persist(novaCompra)
 
+        logger.info("Compra finalizada com sucesso, id: ${novaCompra.id}")
         return ResponseEntity
                 .created(uriComponentsBuilder.path("/v1/compras/{id}").buildAndExpand(novaCompra.id).toUri())
                 .build()
